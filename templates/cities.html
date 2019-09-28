@@ -1,0 +1,26 @@
+{% extends "login.html" %}
+{% block body %}
+
+<div id="container">
+
+
+<div style="text-align:center">
+	<br><br>Select your city
+</div>
+
+
+<form action="/seeall">
+<select name="city" class="cmb">
+  <option value="1">Delhi</option>
+  <option value="2">Kolkata</option>
+  <option value="3">Mumbai</option>
+  <option value="4">Bengaluru</option>
+  <option value="5">Pune</option>
+</select>
+<div id="lower" class="cmb">
+<input type="submit" value="Submit" class="otherbutton" align="middle">
+</div>
+
+</div> 
+
+{% endblock %}

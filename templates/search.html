@@ -1,0 +1,25 @@
+{% extends "login.html" %}
+{% block body %}
+
+<div id="container">
+
+
+<div style="text-align:center">
+	<br><br>Search by
+</div>
+
+
+<form action="/seeall">
+<select name="option" class="cmb">
+  <option value="1">Name</option>
+  <option value="2">Cuisine</option>
+  <option value="3">See all</option>
+</select>
+<div id="lower" class="cmb">
+<input type="submit" value="Submit" class="otherbutton" align="middle">
+</div>
+</form>
+
+</div> 
+
+{% endblock %}

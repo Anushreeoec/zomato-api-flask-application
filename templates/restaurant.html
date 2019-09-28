@@ -1,0 +1,60 @@
+{% extends "login.html" %}
+
+{% block body %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	jQuery(document).ready(function($) {
+	  $(".clickable-row").click(function() {
+	      alert($(this).data("href"));
+		  var $id = $(this).closest("tr").find(".nr").text()
+		  window.location = '/booking?id=' + $id;
+	  });
+	}); 
+</script>
+
+<form action="/seeall">
+<input type="text" id="rname" name="rname" placeholder="NAME THE RESTUARANT YOU WANT TO VISIT TODAY">
+<input type="text" id="cuisine" name="cuisine" placeholder="NAME THE CUISINE YOU WOULD LIKE TO BROWSE">
+<input type="submit" value="SEARCH" class="otherbutton">
+</form>
+
+<br>
+<br>
+
+
+<table id="rest_table">
+	<tr>
+		<th style="visibility:hidden">Restuarant ID</th>
+		<th>Restuarant Name</th>
+		<th>Address</th>
+		<th>Cuisines</th>
+		<th>Cost for Two</th>
+		<th>Timings</th>
+		<th>Have a look!</th>
+
+	</tr>
+
+{% for rest in details %}
+<tr class='clickable-row' data-href="{{ url_for('booking') }}" method= POST>
+	        <td class="nr" style="visibility:hidden">{{ rest.restidn }}</td>
+		<td>{{ rest.name }}</td>
+		<td>{{ rest.address }}</td>
+		<td>{{ rest.cuisine }}</td>
+		<td>{{ rest.cost }}</td>
+		<td>{{ rest.timing }}</td>
+		<td><a href={{ rest.url }}>Click here</a></td>
+	</tr>
+
+{% endfor %}
+
+</table>
+<form action='/browse'>
+<input type="submit" value=&#8606 class="prevnext" name="prev">
+<input type="submit" value=&#8608 class="prevnext" name="next">
+</form>
+
+
+
+{% endblock %}
+
